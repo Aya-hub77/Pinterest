@@ -1,0 +1,67 @@
+.accounts {
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    width: 280px;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 11;
+}
+.accounts .small {
+    font-size: 11px;
+    color: #555;
+    margin: 10px;
+    font-weight: 500;
+}
+.accounts .strong {
+    padding: 10px;
+    border-radius: 5px;
+    color: #222;
+    width: 100%;
+}
+.accounts .strong:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+.accounts .personal-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.accounts .personal-info:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+.accounts .personal-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.accounts img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+.accounts .personal-info div div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.accounts .personal-info div h3 {
+    font-size: 16px;
+}
+.accounts .personal-info div p {
+    font-size: 14px;
+    color: #555;
+}
+.accounts .personal-info .check {
+    color: #444;
+    font-size: 14px;
+}

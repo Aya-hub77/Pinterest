@@ -1,0 +1,210 @@
+.search-page {
+    margin-top: 80px;
+    margin-left: 72px;
+    width: calc(100% - 72px);
+    padding: 10px 20px;
+}
+.search-page h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ea6b7e;
+}
+.search-page .pins-grid {
+    column-count: 4;
+    column-gap: 15px;
+}
+.search-page .pin {
+    break-inside: avoid;
+    position: relative;
+}
+.search-page .pin img {
+    width: 275px;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    border-radius: 20px;
+}
+.search-page .pin .img-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.search-page .pin .pin-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 10px;
+    position: relative;
+}
+.search-page .pin .pin-info p {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.search-page .pin .pin-info .icon {
+    font-size: 22px;
+    padding: 3px 0px;
+    border-radius: 5px;
+    transition: transform 0.1s ease;
+}
+.search-page .pin .pin-info .icon:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+.search-page .pin .pin-info .icon:active {
+    transform: scale(0.82);
+}
+.search-page .pin img:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+.search-page .pin .save {
+    padding: 13px 17px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #e60023;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    display: none;
+}
+.search-page .pin .save:hover {
+    background-color:  #b8001c;
+}
+.search-page .pin .download {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    background-color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 32px;
+    z-index: 2;
+    display: none;
+}
+.search-page .pin .download:hover {
+    background-color: #f0f0f0;
+}
+.search-page .pin .img-wrapper:hover .download {
+    display: block;
+}
+.search-page .pin .img-wrapper:hover .save {
+    display: block;
+}
+.search-page .pin:has(.download:hover) img {
+    filter: brightness(80%);
+}
+.search-page .pin:has(.save:hover) img {
+    filter: brightness(80%);
+}
+
+
+.search-page .pin .pin-info .icon {
+    position: relative;
+}
+.search-page .pin .actions-dropdown {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    background-color: white;
+    width: 230px;
+}
+.search-page .pin .actions-dropdown p {
+    font-size: 13px;
+    margin: 10px;
+}
+.search-page .pin .actions-dropdown div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 10px 5px;
+    border-radius: 10px;
+}
+.search-page .pin .actions-dropdown div:hover {
+    background-color: #faf8f8;
+    cursor: pointer;
+}
+.search-page .pin .actions-dropdown div .icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.search-page .pin .actions-dropdown div p {
+    font-size: 16px;
+    margin: 0;
+}
+.search-page .pin .actions-dropdown.open {
+    display: block;
+}
+
+@media(max-width: 400px){
+    .search-page {
+        margin-top: 50px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .search-page h2 {
+        font-size: 18px;
+    }
+    .search-page .pins-grid {
+        column-count: 2;
+        column-gap: 10px;
+    }
+    .search-page .pin img {
+        width: 160px;
+    }
+    .search-page .pin .actions-dropdown {
+        width: 180px;
+        left: auto;
+    }
+    .search-page .pin .actions-dropdown p {
+        font-size: 11px;
+    }
+}
+@media (min-width: 400px) and (max-width: 800px){
+    .search-page {
+        margin-top: 70px;
+        margin-left: 60px;
+        width: calc(100% - 60px);
+    }
+    .search-page .pins-grid {
+        column-count: 3;
+        column-gap: 10px;
+    }
+    .search-page .pin img {
+        width: 220px;
+    }
+}
+@media (min-width: 1600px){
+    .search-page .pins-grid {
+        column-count: 5;
+        column-gap: 20px;
+    }
+    .search-page h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .search-page .pin {
+        width: 320px;
+    }
+    .search-page .pin img {
+        width: 310px;
+        margin: 0 auto;
+    }
+    .search-page .pin .pin-info p {
+        font-size: 16px;
+    }
+}

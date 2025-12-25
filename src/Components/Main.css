@@ -1,0 +1,241 @@
+.main {
+    position: relative;
+    top: 80px;
+    left: 72px;
+    width: calc(100% - 72px);
+    padding: 0 20px;
+}
+.main .pin {
+    column-count: 4;
+    column-gap: 15px;
+}
+.main .pic {
+    position: relative;
+    z-index: auto;
+    break-inside: avoid;
+}
+.main .img-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.main img {
+    width: 275px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    position: relative;
+}
+.main .pin-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+.main .pin-info p {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.main .pin-info .icon {
+    font-size: 22px;
+    padding: 3px 0px;
+    border-radius: 5px;
+    transition: transform 0.1s ease;
+}
+.main .pin-info .icon:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+.main .pin-info .icon:active {
+    transform: scale(0.82);
+}
+.main img:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+.main .save {
+    padding: 13px 17px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #e60023;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    display: none;
+}
+.main .save:hover {
+    background-color:  #b8001c;
+}
+.main .download {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    background-color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 32px;
+    z-index: 2;
+    display: none;
+}
+.main .download:hover {
+    background-color: #f0f0f0;
+}
+.main .pic:hover .download {
+    display: block;
+}
+.main .pic:hover .save {
+    display: block;
+}
+.main .pic:has(.download:hover) img {
+    filter: brightness(80%);
+}
+.main .pic:has(.save:hover) img {
+    filter: brightness(80%);
+}
+.main .actions {
+    position: relative;
+}
+.main .actions p {
+    position: absolute;
+    font-size: 11px;
+    background-color: #111;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    top: 30px;
+    right: -30px;
+    display: none;
+    z-index: 2;
+}
+.main .actions:hover p {
+    display: block;
+}
+.main .actions .icon {
+    position: relative;
+}
+.main .actions-dropdown {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    position: absolute;
+    background-color: white;
+    width: 270px;
+}
+.main .actions-dropdown p {
+    font-size: 13px;
+    margin: 10px;
+}
+.main .actions-dropdown div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 10px 5px;
+    border-radius: 10px;
+}
+.main .actions-dropdown div:hover {
+    background-color: #faf8f8;
+    cursor: pointer;
+}
+.main .actions-dropdown div .icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.main .actions-dropdown div p {
+    font-size: 16px;
+    margin: 0;
+}
+.main .actions-dropdown.open {
+    display: block;
+}
+@media(max-width:400px){
+    .main {
+        position: relative;
+        top: 50px;
+        left: 0px;
+        width: 100vw;
+        padding: 10px;
+    }
+    .main .pin {
+        column-count: 2;
+        column-gap: 10px;
+    }
+    .main img {
+        width: 180px;
+    }
+    .main .pin-info {
+        padding: 0 10px;
+    }
+    .main .pin-info p {
+        font-size: 12px;
+    }
+    .main .pic:hover .download, .main .pic:hover .save {
+        display: none;
+    }
+    .main .actions-dropdown {
+        width: 170px;
+    }
+    .main .actions-dropdown p {
+        font-size: 11px;
+    }
+    .main .actions-dropdown div {
+        padding: 5px;
+        gap: 10px;
+    }
+    .main .actions-dropdown div .icon {
+        font-size: 18px;
+    }
+    .main .actions-dropdown div p {
+        font-size: 13px;
+    }
+}
+@media(min-width:400px) and (max-width:800px) {
+    .main {
+        top: 90px;
+        left: 60px;
+        width: calc(100% - 60px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left: 20px;
+    }
+    .main .pin {
+        column-count: 3;
+    }
+    .main img {
+        width: 210px;
+    }
+    .main .actions-dropdown {
+        width: 220px;
+    }
+}
+@media(min-width:1400px){
+    .main .pin {
+        column-count: 5;
+        gap: 30px;
+    }
+    .main .pic {
+        width: 320px;
+        margin: 0 auto;
+    }
+    .main img {
+        width: 310px;
+    }
+    .main .actions-dropdown {
+        width: 300px;
+    }
+}

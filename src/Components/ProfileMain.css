@@ -1,0 +1,227 @@
+.profilemain {
+    width: calc(100% - 72px);
+    margin-top: 80px;
+    margin-left: 72px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.profilemain .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+}
+.profilemain .info img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin-top: 80px;
+}
+.profilemain .info h3 {
+    font-size: 35px;
+}
+.profilemain .info button {
+    padding: 13px 17px;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #e60023;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 100px;
+    transition: all ease 300ms;
+}
+.profilemain .info button:hover {
+    background-color:  #b8001c;
+}
+.profilemain .pins.empty div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 80px 0 30px;
+}
+.profilemain .pins.empty div img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+.profilemain .pins.empty div p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.profilemain button {
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #e60023;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: all ease 300ms;
+    margin: 0 auto;
+}
+.profilemain button:hover {
+    background-color:  #b8001c;
+}
+.profilemain .pins.has-pins {
+    column-count: 4;
+    column-gap: 20px;
+    margin: 50px 0;
+}
+.profilemain .pins.has-pins .pin {
+    break-inside: avoid;
+    margin-bottom: 15px;
+}
+.profilemain .pins.has-pins .pin img {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+}
+.profilemain .pins.has-pins .pin p {
+    font-size: 15px;
+    font-weight: 500;
+}
+.profilemain .saved-pins {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.profilemain .saved-title {
+    font-size: 25px;
+    margin: 20px 0;
+}
+.profilemain .saved-pins.empty p {
+    font-size: 18px;
+    text-align: center;
+}
+.profilemain .saved-pins.has-pins {
+    column-count: 4;
+    column-gap: 20px;
+    margin: 20px 0;
+}
+.profilemain .saved-pins.has-pins .pin {
+    break-inside: avoid;
+    margin-bottom: 10px;
+}
+.profilemain .saved-pins.has-pins .pin img {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+}
+.profilemain .saved-pins.has-pins .pin p {
+    font-size: 15px;
+    font-weight: 500;
+}
+.profilemain .logout {
+    margin-top: 20px;
+}
+@media(max-width:400px){
+    .profilemain {
+        width: 100%;
+        margin-left: 0;
+    }
+    .profilemain .pins.has-pins {
+        column-count: 2;
+        column-gap: 15px;
+    }
+    .profilemain .pins.has-pins .pin img {
+        width: 150px;
+    }
+    .profilemain .pins.has-pins .pin p {
+        font-size: 14px;
+    }
+    .profilemain .saved-pins.has-pins {
+        column-count: 2;
+        column-gap: 15px;
+        margin: 10px 20px;
+        display: block;
+    }
+    .profilemain .saved-pins.has-pins .pin img {
+        width: 150px;
+    }
+}
+@media(min-width:400px) and (max-width:800px){
+    .profilemain {
+        width: calc(100% - 60px);
+        margin-left: 60px;
+    }
+    .profilemain .pins.has-pins {
+        column-count: 3;
+        column-gap: 15px;
+    }
+    .profilemain .pins.has-pins .pin img {
+        width: 200px;
+    }
+    .profilemain .pins.has-pins .pin p {
+        font-size: 16px;
+    }
+    .profilemain .saved-pins.has-pins .pin img {
+        width: 200px;
+    }
+}
+@media(min-width:1600px){
+    .profilemain .info {
+        gap: 30px;
+    }
+    .profilemain .info img {
+        width: 160px;
+        height: 160px;
+        margin-top: 100px;
+    }
+    .profilemain .info h3 {
+        font-size: 40px;
+    }
+    .profilemain .info button {
+        font-size: 19px;
+        padding: 15px 19px;
+        margin-bottom: 140px;
+    }
+    .profilemain .pins.empty div {
+        margin: 100px 0;
+        gap: 20px;
+    }
+    .profilemain .pins.empty div img {
+        width: 200px;
+        height: 200px;
+    }
+    .profilemain .pins.empty div p {
+        font-size: 20px;
+    }
+    .profilemain button {
+        padding: 12px 16px;
+        font-size: 17px;
+    }
+    .profilemain .pins.has-pins {
+        column-count: 5;
+        margin: 80px 0;
+    }
+    .profilemain .pins.has-pins .pin img {
+        width: 300px;
+    }
+    .profilemain .pins.has-pins .pin p {
+        font-size: 19px;
+    }
+    .profilemain .saved-pins.has-pins .pin img {
+        width: 300px;
+    }
+    .profilemain .saved-pins.has-pins .pin p {
+        font-size: 19px;
+    }
+    .profilemain .logout, .profilemain button {
+        width: 130px;
+        padding: 15px 19px;
+        font-size: 19px;
+    }
+}
