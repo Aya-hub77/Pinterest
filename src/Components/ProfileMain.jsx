@@ -8,7 +8,7 @@ import { useAxios } from '../api/axiosInstance';
 import Spinner from './Spinner'
 
 const ProfileMain = () => {
-
+const API_URL = import.meta.env.VITE_API_URL;
   const { user, logout } = useAuth();
   const axiosInstance = useAxios();
   const [profile, setProfile] = useState(null);
@@ -80,7 +80,7 @@ const handleLogout = async () => {
             ) : (
           pins.map(pin => (
             <div key={pin.id} className='pin'>
-              <img src={`http://localhost:5000${pin.url}`} alt={pin.caption} />
+              <img src={`${API_URL}/uploads/${pin.img}`} alt={pin.caption} />
               <p>{pin.caption}</p>
             </div>
           ))
@@ -94,7 +94,7 @@ const handleLogout = async () => {
           ) : (
           savedPins.map(pin => (
           <div key={pin._id} className='pin'>
-            <img src={`http://localhost:5000/uploads/${pin.img}`} alt={pin.caption} />
+            <img src={`${API_URL}/uploads/${pin.img}`} alt={pin.caption} />
             <p>{pin.caption}</p>
           </div>
           ))

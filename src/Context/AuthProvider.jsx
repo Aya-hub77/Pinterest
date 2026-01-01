@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import AuthContext from "./AuthContext";
 
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const initializeAuth = useCallback(async () => {
     try {
-      const res = await axios.get(`${BACKEND_URL}/auth/refresh-token`, { withCredentials: true, });
+      const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true, });
       setAccessToken(res.data.accessToken);
       setUser(res.data.user);
     } catch {
@@ -28,13 +28,13 @@ export const AuthProvider = ({ children }) => {
   }, [initializeAuth]);
 
   const login = async (email, password) => {
-    const res = await axios.post(`${BACKEND_URL}/auth/login`, { email, password }, { withCredentials: true });
+    const res = await axios.post(`${API_URL}/auth/login`, { email, password }, { withCredentials: true });
     setAccessToken(res.data.accessToken);
     setUser(res.data.user);
   };
 
   const logout = async () => {
-    await axios.post(`${BACKEND_URL}/auth/logout`, {}, { withCredentials: true });
+    await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
     setAccessToken(null);
     setUser(null);
   };

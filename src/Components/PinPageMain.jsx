@@ -12,7 +12,7 @@ import Spinner from "./Spinner";
 import profile from "../assets/profile.png";
 import "./PinPageMain.css";
 
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const PinPageMain = ({ pins, loading, error, setOpenDropdownActions, openDropdownActions, pinDropdown, setPinDropdown, }) => {
   const axiosInstance = useAxios();
@@ -113,7 +113,7 @@ const handleSave = async (pinId) => {
           </div>
           <button className={`save ${pinsState[pinData._id]?.saved ? "saved" : ""}`} onClick={() => handleSave(pinData._id)} >{pinsState[pinData._id]?.saved ? "Saved" : "Save"}</button>
         </div>
-        <img src={`${BACKEND_URL}/uploads/${pinData.img}`} loading="lazy" alt={pinData.caption}/>
+        <img src={`${API_URL}/uploads/${pinData.img}`} loading="lazy" alt={pinData.caption}/>
         <p className="caption">{pinData.caption}</p>
         <div className="publisher-info">
           <img src={profile} alt="Publisher" />
@@ -132,7 +132,7 @@ const handleSave = async (pinId) => {
             <div key={s.id} className="card">
               <div className="pin-wrapper">
                 <Link to={`/pin/${s.id}`}>
-                  <img src={`${BACKEND_URL}/uploads/${s.img}`} alt={s.caption} />
+                  <img src={`${API_URL}/uploads/${s.img}`} alt={s.caption} />
                 </Link>
                 <button className="save">Save</button>
                 <LuDownload className="download" />
@@ -163,7 +163,7 @@ const handleSave = async (pinId) => {
             <div key={s.id} className="card">
               <div className="pin-wrapper">
                 <Link to={`/pin/${s.id}`}>
-                  <img src={`${BACKEND_URL}/uploads/${s.img}`} alt={s.caption} />
+                  <img src={`${API_URL}/uploads/${s.img}`} alt={s.caption} />
                 </Link>
                 <button className="save">Save</button>
                 <LuDownload className="download" />
@@ -193,7 +193,7 @@ const handleSave = async (pinId) => {
 <div className='pinpagemain-mobile'>
   <div className='pin'>
     <Link to={`/pin/${pinData.id}`}>
-      <img src={`${BACKEND_URL}/uploads/${pinData.img}`} loading='lazy' />
+      <img src={`${API_URL}/uploads/${pinData.img}`} loading='lazy' />
     </Link>
     <div className='info'>
       <div className='like-wrapper'>
@@ -221,7 +221,7 @@ const handleSave = async (pinId) => {
     {pins.map(s => (
       <div key={s.id} className="card">
         <Link to={`/pin/${s.id}`}>
-          <img src={`${BACKEND_URL}/uploads/${s.img}`} />
+          <img src={`${API_URL}/uploads/${s.img}`} />
         </Link>
         <div className="pin-info">
           <p>{s.caption}</p>

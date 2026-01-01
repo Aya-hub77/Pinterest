@@ -9,7 +9,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { PiEyeSlashBold } from "react-icons/pi";
 
 
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const SearchMain = ({openDropdownId, setOpenDropdownId}) => {
 
@@ -49,7 +49,7 @@ const SearchMain = ({openDropdownId, setOpenDropdownId}) => {
           <div className="pin" key={pin._id}>
             <div className="img-wrapper">
               <Link to={`/pin/${pin._id}`}>
-              <img src={`${BACKEND_URL}/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /> </Link>
+              <img src={`${API_URL}/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /> </Link>
               <button className="save">Save</button>
               <LuDownload className="download" />
             </div>

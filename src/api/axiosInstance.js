@@ -2,7 +2,7 @@ import axios from "axios";
 import { useAuth } from "../Context/useAuth";
 import { useMemo } from "react";
 
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 let isRefreshing = false;
 let subscribers = [];
@@ -20,7 +20,7 @@ export const useAxios = () => {
   const { accessToken, setAccessToken, setUser, logout } = useAuth();
 
   const instance = useMemo(() => {
-    const axiosInstance = axios.create({ baseURL: BACKEND_URL, withCredentials: true, });
+    const axiosInstance = axios.create({ baseURL: API_URL, withCredentials: true, });
 
     axiosInstance.interceptors.request.use((config) => {
       if (accessToken) {
@@ -49,7 +49,7 @@ export const useAxios = () => {
           isRefreshing = true;
 
           try {
-            const res = await axios.get(`${BACKEND_URL}/auth/refresh-token`, { withCredentials: true } );
+            const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true } );
             setAccessToken(res.data.accessToken);
             setUser(res.data.user);
             onRefreshed(res.data.accessToken);

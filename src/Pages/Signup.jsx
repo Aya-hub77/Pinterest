@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useAuth } from '../Context/useAuth';
 
 const Signup = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
     const { setAccessToken, setUser } = useAuth();
 
@@ -15,11 +16,11 @@ const [error, setError] = useState("");
 
   useEffect(() => {
     const getCsrf = async () => {
-      const res = await axios.get("http://localhost:5000/csrf-token", { withCredentials: true });
+      const res = await axios.get(`${API_URL}/csrf-token`, { withCredentials: true });
       setCsrfToken(res.data.csrfToken);
     };
     getCsrf();
-  }, []);
+  }, );
 const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 };
@@ -27,7 +28,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-        const res = await axios.post("http://localhost:5000/auth/signup", formData, { withCredentials: true, headers: {"X-CSRF-Token": csrfToken}, });
+        const res = await axios.post(`${API_URL}/auth/signup`, formData, { withCredentials: true, headers: {"X-CSRF-Token": csrfToken}, });
         setAccessToken(res.data.accessToken);
         setUser(res.data.user);
         console.log(res.data);

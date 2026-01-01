@@ -8,7 +8,7 @@ import { PiEyeSlashBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner.jsx"
 
-const BACKEND_URL = "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Main = ({ loading, pins, error, openDropdownId, setOpenDropdownId }) => {
   if (loading) return <Spinner />;
@@ -25,7 +25,7 @@ const Main = ({ loading, pins, error, openDropdownId, setOpenDropdownId }) => {
           <div className="pic" key={pin.id}>
             <div className="img-wrapper">
               <Link to={`/pin/${pin.id}`}>
-              <img src={`${BACKEND_URL}/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /></Link>
+              <img src={`${API_URL}/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /></Link>
               <button className="save">Save</button>
               <LuDownload className="download" />
             </div>
