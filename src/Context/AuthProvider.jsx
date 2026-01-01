@@ -15,9 +15,8 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true, });
       setAccessToken(res.data.accessToken);
       setUser(res.data.user);
-    } catch {
-      setAccessToken(null);
-      setUser(null);
+    } catch (err) {
+      console.log("Refresh token invalid or missing", err);
     } finally {
       setInitialized(true);
     }
