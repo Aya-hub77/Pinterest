@@ -11,15 +11,7 @@ const Login = () => {
     const navigate = useNavigate();
 
 const [formData, setFormData] = useState({ email: "",password: "" });
-  const [csrfToken, setCsrfToken] = useState("");
   const [error, setError] = useState("");
-  useEffect(() => {
-    const getCsrf = async () => {
-      const res = await axios.get(`${API_URL}/csrf-token`, { withCredentials: true });
-      setCsrfToken(res.data.csrfToken);
-    };
-    getCsrf();
-  }, [API_URL]);
 const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 };
@@ -27,7 +19,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-        const res = await axios.post(`${API_URL}/auth/login`, formData, { withCredentials: true, headers: { "X-CSRF-Token": csrfToken } });
+        const res = await axios.post(`${API_URL}/auth/login`, formData, { withCredentials: true });
         setAccessToken(res.data.accessToken);
         setUser(res.data.user);
         console.log(res.data);
