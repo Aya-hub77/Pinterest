@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
   const initializeAuth = useCallback(async () => {
     try {
-      const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true, });
+      const res = await axios.get('/auth/refresh-token', { withCredentials: true, });
       setAccessToken(res.data.accessToken);
       setUser(res.data.user);
     } catch {
@@ -28,13 +28,13 @@ export const AuthProvider = ({ children }) => {
   }, [initializeAuth]);
 
   const login = async (email, password) => {
-    const res = await axios.post(`${API_URL}/auth/login`, { email, password }, { withCredentials: true });
+    const res = await axios.post('/auth/login', { email, password }, { withCredentials: true });
     setAccessToken(res.data.accessToken);
     setUser(res.data.user);
   };
 
   const logout = async () => {
-    await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
+    await axios.post('/auth/logout', {}, { withCredentials: true });
     setAccessToken(null);
     setUser(null);
   };

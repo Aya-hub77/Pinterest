@@ -49,7 +49,7 @@ export const useAxios = () => {
           isRefreshing = true;
 
           try {
-            const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true } );
+            const res = await axios.get('/auth/refresh-token' );
             setAccessToken(res.data.accessToken);
             setUser(res.data.user);
             onRefreshed(res.data.accessToken);
