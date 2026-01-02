@@ -49,9 +49,11 @@ export const useAxios = () => {
           isRefreshing = true;
 
           try {
-            const res = await axiosInstance.get('/auth/refresh-token', { withCredentials: true } );
+            const token = localStorage.getItem("refreshToken");
+            const res = await axiosInstance.post('/auth/refresh-token', { token });
             setAccessToken(res.data.accessToken);
             setUser(res.data.user);
+            localStorage.setItem("refreshToken", res.data.refreshToken);
             onRefreshed(res.data.accessToken);
             originalReq.headers.Authorization = `Bearer ${res.data.accessToken}`;
             return axiosInstance(originalReq);

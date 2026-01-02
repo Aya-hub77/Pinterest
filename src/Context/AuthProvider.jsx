@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback} from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import AuthContext from "./AuthContext";
 
@@ -10,32 +10,39 @@ export const AuthProvider = ({ children }) => {
   const [initialized, setInitialized] = useState(false);
 
 
-  const initializeAuth = useCallback(async () => {
-    try {
-      const res = await axios.get(`${API_URL}/auth/refresh-token`, { withCredentials: true, });
-      setAccessToken(res.data.accessToken);
-      setUser(res.data.user);
-    } catch (err) {
-      console.log("Refresh token invalid or missing", err);
-    } finally {
-      setInitialized(true);
+useEffect(() => {
+  const init = async () => {
+    const token = localStorage.getItem("refreshToken");
+    if (token) {
+      try {
+        const res = await axios.post(`${API_URL}/auth/refresh-token`, { token });
+        setAccessToken(res.data.accessToken);
+        setUser(res.data.user);
+        if (res.data.refreshToken) localStorage.setItem("refreshToken", res.data.refreshToken);
+      } catch (err) {
+        console.log("Refresh token invalid or missing", err);
+        localStorage.removeItem("refreshToken");
+      }
     }
-  }, []);
+    setInitialized(true);
+  };
 
-  useEffect(() => {
-    initializeAuth();
-  }, [initializeAuth]);
+  init();
+}, []);
+
 
   const login = async (email, password) => {
-    const res = await axios.post(`${API_URL}/auth/login`, { email, password }, { withCredentials: true });
+    const res = await axios.post(`${API_URL}/auth/login`, { email, password });
     setAccessToken(res.data.accessToken);
     setUser(res.data.user);
+    localStorage.setItem("refreshToken", res.data.refreshToken);
   };
 
   const logout = async () => {
-    await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
+    await axios.post(`${API_URL}/auth/logout`);
     setAccessToken(null);
     setUser(null);
+    localStorage.removeItem("refreshToken");
   };
 
   if (!initialized) return null;
