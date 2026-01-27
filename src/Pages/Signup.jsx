@@ -1,59 +1,44 @@
 import React, {useState, useEffect} from 'react'
 import { BsPinterest } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
-import './Signup.css'
 import axios from 'axios';
-import { useAuth } from '../Context/useAuth';
+import '../Components/Css.css';
 
 const Signup = () => {
-  const API_URL = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
-    const { setAccessToken, setUser } = useAuth();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-const [formData, setFormData] = useState({username: "", email: "", password: "" });
-const [error, setError] = useState("");
-
-const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-};
 const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-        const res = await axios.post(`${API_URL}/auth/signup`, formData, { withCredentials: true });
-        setAccessToken(res.data.accessToken);
-        setUser(res.data.user);
-        console.log(res.data);
-        alert("Signup successful!");
-        navigate("/", { replace: true });
-    } catch (err) {
-        if (err.response?.data?.errors?.length > 0) {
-            setError(err.response.data.errors[0].msg);
-        } else {
-            setError([{ msg: err.response?.data?.message || "Signup failed" }]);
-        }
-    }
-};
-  useEffect(() => {
-    document.title = "Signup - Pinterest";
-  }, []);
+  e.preventDefault();
+  try {
+    const res = await axios.post("/api/signup", {username, email, password}, { withCredentials: true } );
+    console.log(res);
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error("Error uploading form data:", error);
+    setError(error.response?.data?.message || "Signup failed");
+  }
+}
+
+  useEffect(() => { document.title = "Signup - Pinterest"; }, []);
 
    return (
-      <div className='signup'>
-         <BsPinterest className='icon' />
-         <h2>Welcome to Pinterest</h2>
-         <form method="post" onSubmit={handleSubmit}>
-            <div>
-            <input type="text" onChange={handleChange}  name="username" placeholder='Username' required />
-            <input type="email" onChange={handleChange} name="email" placeholder='Email' required />
-            <input type="password" onChange={handleChange} name="password" placeholder='Password' required />
-            </div>
+      <main className='signup'>
+        <form onSubmit={handleSubmit}>
+            <BsPinterest className="logo" />
+            <h2>Welcome to Pinterest</h2>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' required />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' required />
             <p className='agreement'>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .</p>
             <button>Sign up</button>
-            <p className='switch'>Have an account? <Link to="/login" className='link'>Log in</Link></p>
+            {error && <p className="error">{error}</p>}
+            <p>Have an account? <Link to="/login" className='link'>Log in</Link></p>
          </form>
-      {error && <div className="error-message">{error}</div>}
-      </div>
+      </main>
    )
 }
 export default Signup

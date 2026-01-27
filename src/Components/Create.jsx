@@ -12,7 +12,8 @@ const Create = ({isCreateOpen}) => {
     {isCreateOpen && (
       <div className='create'>
         <h2>Create</h2>
-        <Link to="/creation-tool"><div className='item'>
+        <Link to="/creation-tool">
+        <div className='item'>
             <BsPin className='icon' />
             <div>
             <h4>Pin</h4>

@@ -12,28 +12,13 @@ import { IoSettingsOutline } from "react-icons/io5";
 const Sidebar = ({setIsCreateOpen, setShowNot, setShowSettings, setShowMessages}) => {
    return (
       <nav className='sidebar'>
-        <div className='sidebar-container'>
-        <div className='sidebar-item'><NavLink to="/" ><BsPinterest className='icon' id='pin' /></NavLink>
-        <p>Home</p></div>
-        <div className='sidebar-item'><NavLink to="/" ><RiHomeSmile2Fill className='icon' /></NavLink>
-        <p>Home</p></div>
-        <div className='sidebar-item'><NavLink to="/profile" ><RiLayout2Line className='icon' /></NavLink>
-        <p>Your boards</p></div>
-        <div className='sidebar-item'><MdOutlineAddBox className='icon bounce' onClick={(e) => { e.stopPropagation(); setIsCreateOpen(prev => !prev);}} />
-        <p>Create</p></div>
-        <div className='sidebar-item'><IoNotificationsOutline className='icon bounce' onClick={(e) => { e.stopPropagation(); setShowNot(prev => !prev);}} />
-        <p>Updates</p></div>
-        <div className='sidebar-item'><LuMessageCircleMore className='icon bounce' onClick={(e) => { e.stopPropagation(); setShowMessages(prev => !prev);}} />
-        <p>Messages</p></div>
-        <div className='sidebar-item'><IoSettingsOutline className='icon bounce' id='settings' onClick={(e) => { e.stopPropagation(); setShowSettings(prev => !prev);}} />
-        <p id='settings'>Settings & Support</p></div>
-        </div>
-        <div className='sidebar-mobile'>
-            <NavLink to="/" ><RiHomeSmile2Fill className='icon' /></NavLink>
-            <IoNotificationsOutline className='icon' onClick={(e) => { e.stopPropagation(); setShowNot(prev => !prev);}} />
-            <LuMessageCircleMore className='icon' onClick={(e) => { e.stopPropagation(); setShowMessages(prev => !prev);}} />
-            <IoSettingsOutline className='icon' onClick={(e) => { e.stopPropagation(); setShowSettings(prev => !prev);}} />
-        </div>
+        <NavLink to="/" ><BsPinterest className='icon pin'/></NavLink>
+        <NavLink to="/" ><RiHomeSmile2Fill className='icon home' /></NavLink>
+        <NavLink to="/profile" ><RiLayout2Line className='icon boards' /></NavLink>
+        <MdOutlineAddBox className='icon cre' onClick={(e) => { e.stopPropagation(); setIsCreateOpen(prev => !prev);}} />
+        <IoNotificationsOutline className='icon' onClick={(e) => { e.stopPropagation(); setShowNot(prev => !prev);}} />
+        <LuMessageCircleMore className='icon' onClick={(e) => { e.stopPropagation(); setShowMessages(prev => !prev);}} />
+        <IoSettingsOutline className='icon' onClick={(e) => { e.stopPropagation(); setShowSettings(prev => !prev);}} />
       </nav>
    )
 }

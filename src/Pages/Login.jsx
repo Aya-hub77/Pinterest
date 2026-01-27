@@ -1,54 +1,41 @@
 import React, {useState, useEffect} from 'react'
 import { BsPinterest } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css'
 import axios from 'axios';
-import { useAuth } from '../Context/useAuth';
+import '../Components/Css.css';
 
 const Login = () => {
-  const API_URL = import.meta.env.VITE_API_URL;
-    const { setAccessToken, setUser } = useAuth();
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-const [formData, setFormData] = useState({ email: "",password: "" });
-  const [error, setError] = useState("");
-const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-};
 const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-        const res = await axios.post(`${API_URL}/auth/login`, formData, { withCredentials: true });
-        setAccessToken(res.data.accessToken);
-        setUser(res.data.user);
-        console.log(res.data);
-        alert("Login successful!");
-        navigate("/", { replace: true });
-    } catch (err) {
-        if (err.response?.data?.errors?.length > 0) {
-            setError(err.response.data.errors[0].msg);
-        } else {
-            setError(err.response?.data?.message || "Login failed");
-        }
-    }
-};
-  useEffect(() => {
-    document.title = "Login - Pinterest";
-  }, []);
+  e.preventDefault();
+  try {
+    const res = await axios.post("/api/login", {email, password}, { withCredentials: true } );
+    console.log(res);
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error("Error uploading form data:", error);
+    setError(error.response?.data?.message || "Login failed");
+  }
+}
+
+  useEffect(() => { document.title = "Login - Pinterest"; }, []);
 
    return (
-      <div className='login'>
-         <BsPinterest className='icon' />
-         <h2>Welcome Back</h2>
-         <form method="post" onSubmit={handleSubmit}>
-            <input type="email" onChange={handleChange} name="email" placeholder='Email' required />
-            <input type="password" onChange={handleChange} name="password" placeholder='Password' required />
+      <main className='login'>
+         <form onSubmit={handleSubmit}>
+            <BsPinterest className='logo' />
+            <h2>Welcome Back</h2>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' required />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Password' required />
             <button>Log in</button>
-            <p className='switch'>Don't have an account? <Link to="/signup" className='link'>Sign up</Link></p>
+            {error && <p className="error">{error}</p>}
+            <p>Don't have an account? <Link to="/signup" className='link'>Sign up</Link></p>
          </form>
-         {error && <div className="error-message">{error}</div>}
-      </div>
+      </main>
    )
 }
 export default Login

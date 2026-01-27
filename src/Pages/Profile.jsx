@@ -3,40 +3,35 @@ import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
 import Create from '../Components/Create';
 import Notifications from '../Components/Notifications';
-import Accounts from '../Components/Accounts';
 import Settings from '../Components/Settings';
 import Messages from '../Components/Messages';
 import ProfileMain from '../Components/ProfileMain';
 
 const Profile = () => {
-
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [showNot, setShowNot] = useState(false);
-  const [accounts, setAccounts] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showMessages, setShowMessages] = useState(false);
 
   useEffect(() => {
-    const handleClickOutside = e => {
-      if (!e.target.closest('.create')) setIsCreateOpen(false);
-      if (!e.target.closest('.notifications')) setShowNot(false);
-      if (!e.target.closest('.messages')) setShowMessages(false);
-      if (!e.target.closest('.settings')) setShowSettings(false);
-      if (!e.target.closest('.accounts')) setAccounts(false);
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
+  const handleClickOutside = () => {
+    setIsCreateOpen(false);
+    setShowNot(false);
+    setShowSettings(false);
+    setShowMessages(false);
+  };
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => document.removeEventListener("mousedown", handleClickOutside);
+}, []);
 
 
    return (
       <div>
         <Sidebar setIsCreateOpen={setIsCreateOpen} setShowNot={setShowNot} setShowSettings={setShowSettings} setShowMessages={setShowMessages} />
-        <Navbar setAccounts={setAccounts} accounts={accounts} />
+        <Navbar />
         <ProfileMain />
         <Create isCreateOpen={isCreateOpen} />
         <Notifications showNot={showNot} />
-        <Accounts accounts={accounts} />
         <Settings showSettings={showSettings} setShowSettings={setShowSettings} />
         <Messages setShowMessages={setShowMessages} showMessages={showMessages} />
       </div>

@@ -6,9 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/auth': { target: 'http://localhost:5000', changeOrigin: true, secure: false },
-      '/csrf-token': { target: 'http://localhost:5000', changeOrigin: true, secure: false },
-      '/api': { target: 'http://localhost:5000', changeOrigin: true, secure: false }
+      '/api': {
+        target: 'https://pinterest-backend-lvmx.onrender.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
     }
-  },
+  }
 })

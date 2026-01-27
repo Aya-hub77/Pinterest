@@ -1,7 +1,7 @@
 .create {
     position: fixed;
-    top: 100px;
-    left: 85px;
+    top: 20%;
+    left: 8%;
     background-color: white;
     width: 390px;
     height: auto;
@@ -15,8 +15,7 @@
 .create h2 {
     font-size: 19px;
     font-weight: 600;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin: 0 10px 10px;
 }
 .create .item {
     display: flex;
@@ -47,14 +46,4 @@
 .create .item:hover {
     background-color: #f5f5f5;
     cursor: pointer;
-}
-@media(min-width:400px) and (max-width:800px){
-    .create {
-        top: 180px;
-    }
-}
-@media(min-width:1400px){
-    .create {
-        top: 200px;
-    }
 }

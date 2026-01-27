@@ -1,0 +1,53 @@
+.signup, .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.signup form, .login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid #E60023;
+    border-radius: 20px;
+    padding: 30px 20px;
+}
+.signup .logo, .login .logo {
+    color: #E60023;
+    font-size: 80px;
+}
+.signup input, .login input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    font-size: 18px;
+}
+.signup input:focus, .login input:focus {
+    outline: 2px solid #E60023;
+}
+.signup .agreement {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+.signup button, .login button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #E60023;
+    cursor: pointer;
+    background-color: #E60023;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.signup .link, .signup .error, .login .link, .login .error {
+    color:#E60023;
+    font-weight: 500;
+    font-size: 18px;
+}

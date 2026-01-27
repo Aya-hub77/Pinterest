@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import { FiSearch } from "react-icons/fi";
-import { SlArrowDown } from "react-icons/sl";
 import profile from '../assets/profile.png';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAxios } from '../api/axiosInstance';
+import axios from 'axios';
 
-const Navbar = ({ setAccounts }) => {
+const Navbar = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const axiosInstance = useAxios();
   const navigate = useNavigate();
 
   const handleChange = async (e) => {
@@ -20,7 +18,7 @@ const Navbar = ({ setAccounts }) => {
       return;
     }
     try {
-      const res = await axiosInstance.get(`/pin/suggestions?q=${encodeURIComponent(value)}`);
+      const res = await axios.get(`/api/suggestions?q=${encodeURIComponent(value)}`);
       setSuggestions(res.data);
     } catch (err) {
       console.error(err);
@@ -35,10 +33,10 @@ const Navbar = ({ setAccounts }) => {
   };
 
   return (
-    <div className='navbar'>
+    <nav className='navbar'>
       <div className="input">
-        <input type="text" placeholder="Search" value={search} onChange={handleChange} onKeyDown={handleKeyDown} />
         <FiSearch className='icon' />
+        <input type="text" placeholder="Search" value={search} onChange={handleChange} onKeyDown={handleKeyDown} />
         {suggestions.length > 0 && (
           <div className="suggestions-dropdown">
             {suggestions.map(s => (
@@ -47,19 +45,8 @@ const Navbar = ({ setAccounts }) => {
           </div>
         )}
       </div>
-      <div className='profile'>
-        <div>
-          <NavLink to="/profile">
-            <img src={profile} alt="profile" />
-            <p className='profile-p'>Your profile</p>
-          </NavLink>
-        </div>
-        <div>
-          <SlArrowDown className='icon' onClick={(e) => { e.stopPropagation(); setAccounts(prev => !prev); }} />
-          <p className='accounts-p'>Accounts</p>
-        </div>
-      </div>
-    </div>
+      <NavLink to="/profile"><img src={profile} alt="profile" className='profile' /></NavLink>
+    </nav>
   );
 };
 

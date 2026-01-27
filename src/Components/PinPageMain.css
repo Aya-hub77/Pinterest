@@ -1,23 +1,26 @@
-.pinpagemain { 
-    width: calc(100% - 72px); 
-    margin-top: 80px; 
-    margin-left: 72px; 
+.pinpagemain {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.pinpagemain-mobile {
-    display: none;
-}
-.pinpagemain .arrow { 
-    font-size: 65px; 
-    opacity: 0.8; 
-    padding: 20px; 
-    border-radius: 20px; 
-    margin-left: 20px; 
+.pinpagemain .arrow {
+    position: absolute;
+    background-color: white;
+    font-size: 50px;
+    padding: 10px;
+    margin: 20px;
+    opacity: 0.8;
+    border-radius: 20px;
+    align-self: normal;
 }
 .pinpagemain .arrow:hover { 
     cursor: pointer; 
     background-color: #f3f2f2; 
 }
 .pinpagemain .pin-card { 
+    width: 100%;
     display: flex; 
     flex-direction: column; 
     border: 1px solid #d8d7d7; 
@@ -25,12 +28,6 @@
     padding: 10px 15px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); 
     margin: 0 10px;
-    margin-right: 20px;
-    width: 490px;
-    height: 570px;
-    position: absolute;
-    top: 80px;
-    left: 160px;
 }
 .pinpagemain .pin-card-header { 
     width: 100%; 
@@ -40,24 +37,51 @@
     justify-content: space-between; 
     padding-bottom: 10px; 
 }
+.pinpagemain .pin-card .img { 
+    width: 100%; 
+    height: auto;
+    object-fit: cover; 
+    border-radius: 20px; 
+    margin: 0 auto; 
+    display: block; 
+    max-width: 100%;
+}
+.pinpagemain .pin-card .caption {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.pinpagemain .publisher-info { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 10px 0; 
+}
+.pinpagemain .publisher-info img { 
+    width: 30px; 
+    height: 30px; 
+    object-fit: cover; 
+}
+.pinpagemain .publisher-info p { 
+    font-weight: 500; 
+}
+.pinpagemain .publisher-info img:hover,
+.pinpagemain .publisher-info p:hover { 
+    cursor: pointer; 
+}
+.pinpagemain .pin-card-header { 
+    width: 100%; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between;  
+}
 .pinpagemain .pin-card-header div { 
     display: flex; 
     flex-direction: row; 
     align-items: center; 
-    gap: 20px; 
-}
-.pinpagemain .pin-card-header .like-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-}
-.pinpagemain .pin-card-header .like-wrapper .icon.liked {
-    color:#b8001c;
-}
-.pinpagemain .pin-card-header .like-wrapper .likes-count {
-    font-size: 15px;
-    font-weight: 600;
+    gap: 10px; 
 }
 .pinpagemain .pin-card-header .icon { 
     font-size: 45px; 
@@ -68,7 +92,7 @@
     cursor: pointer; 
     background-color: #f3f2f2; 
 }
-.pinpagemain button.save { 
+.pinpagemain button { 
     padding: 13px 17px; 
     border-radius: 15px; 
     font-size: 16px; 
@@ -81,92 +105,43 @@
 .pinpagemain button:hover { 
     background-color: #b8001c; 
 }
-.pinpagemain button.saved {
-    background-color: #333;
-}
-.pinpagemain .pin-card img { 
-    height: 420px; 
-    width: auto; 
-    object-fit: cover; 
-    border-radius: 20px; 
-    margin: 0 auto; 
-    display: block; 
-    max-width: 100%;
-}
-.pinpagemain .pin-card .caption {
-    font-size: 16px;
+.pinpagemain .more {
+    font-size: 22px;
     font-weight: 500;
-    margin: 10px 0;
+    align-self: flex-start;
+    margin: 10px;
 }
-.pinpagemain .publisher-info { 
-    display: flex; 
-    flex-direction: row; 
-    align-items: center; 
-    gap: 10px; 
-    margin: 10px 0; 
-}
-.pinpagemain .publisher-info img { 
-    width: 25px; 
-    height: 25px; 
-    object-fit: cover; 
-    margin: 0; 
-}
-.pinpagemain .publisher-info p { 
-    font-size: 14px; 
-    font-weight: 500; 
-}
-.pinpagemain .publisher-info img:hover,
-.pinpagemain .publisher-info p:hover { 
-    cursor: pointer; 
-}
-.pinpagemain .mobile-pins {
-    display: none;
-}
-.pinpagemain .left-pins {
+.pinpagemain .pins {
     column-count: 2;
-    column-gap: 5px;
-    position: absolute;
-    top: 670px;
-    left: 170px;
+    column-gap: 10px;
+    padding: 10px;
 }
-.pinpagemain .right-pins {
-    column-count: 2;
-    column-gap: 5px;
-    position: absolute;
-    top: 80px;
-    left: 675px;
-}
-.pinpagemain .left-pins .card, .pinpagemain .right-pins .card {
-    display: flex;
-    flex-direction: column;
+.pinpagemain .pins .pin {
     break-inside: avoid;
-    page-break-inside: avoid;
-    position: relative;
 }
 .pinpagemain .pins .pin-wrapper { 
     position: relative;
     display: inline-block;
 }
-.pinpagemain .pins img { 
-    width: 240px; 
-    height: auto; 
-    object-fit: cover; 
-    border-radius: 20px; 
+.pinpagemain .pins img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
 }
 .pinpagemain .pins .pin-info { 
     display: flex; 
     flex-direction: row; 
     justify-content: space-between; 
     align-items: center; 
-    padding: 10px; 
-    position: relative; 
+    padding: 5px 10px 10px; 
     margin: 0 5px;
 }
 .pinpagemain .pins .pin-info p { 
     font-size: 14px; 
     font-weight: 500; 
     cursor: pointer; 
-    width: 200px;
+    width: 70%;
 }
 .pinpagemain .pins .pin-info .icon { 
     font-size: 22px; 
@@ -178,7 +153,7 @@
     cursor: pointer; 
     background-color: #f1f1f1; 
 }
-.main .pin-info .icon:active { 
+.pinpagemain .pin-info .icon:active { 
     transform: scale(0.82); 
 }
 .pinpagemain .pins img:hover { 
@@ -222,320 +197,51 @@
 .pinpagemain .pins .pin-wrapper:hover .save { 
     display: block; 
 }
-.main .pic:has(.download:hover) img { 
-    filter: brightness(80%); 
-}
-.main .pic:has(.save:hover) img { 
-    filter: brightness(80%); 
-}
 .pinpagemain .pin-wrapper:has(.download:hover) img { 
     filter: brightness(80%); 
 }
 .pinpagemain .pin-wrapper:has(.save:hover) img { 
     filter: brightness(80%); 
 }
-.pinpagemain .actions-dropdown {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 3;
-    position: absolute;
-    background-color: white;
-    width: 270px;
-    bottom: 30px;
-}
-.pinpagemain .actions-dropdown div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 10px 5px;
-    border-radius: 10px;
-}
-.pinpagemain .actions-dropdown div:hover {
-    background-color: #faf8f8;
-    cursor: pointer;
-}
-.pinpagemain .actions-dropdown div .icon {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-.pinpagemain .actions-dropdown div p {
-    font-size: 16px;
-    margin: 0;
-}
-.pinpagemain .actions-dropdown.open {
-    display: block;
-}
-.pinpagemain .pin-card-dropdown {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 3;
-    background-color: white;
-    width: 220px;
-    position: absolute;
-    top: 60px;
-    left: 120px;
-}
-.pinpagemain .pin-card-dropdown.open {
-    display: block;
-}
-.pinpagemain .pin-card-dropdown p {
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: 500;
-}
-.pinpagemain .pin-card-dropdown p:hover {
-    background-color: #faf8f8;
-    cursor: pointer;
-}
-@media(min-width:400px) and (max-width:800px){
+@media(min-width:800px){
     .pinpagemain {
-        width: calc(100% - 80px);
-        margin-top: 60px;
-        margin-left: 60px;
-        margin-right: 20px;
+        width: calc(100% - 7%);
+        margin-top: 80px;
+        margin-left: 7%;
+        margin-bottom: 0;
     }
     .pinpagemain .arrow {
-        display: none;
+        font-size: 60px;
+        left: 12%;
     }
     .pinpagemain .pin-card {
-        top: 90px;
-        left: 60px;
-        width: 520px;
-        height: 780px;
-        margin: 0 10px;
-    }
-    .pinpagemain .pin-card img {
-        max-width: 480px;
-        height: 600px;
-    }
-    .pinpagemain .publisher-info img {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
-    }
-    .pinpagemain .publisher-info p {
-        font-size: 15px;
-    }
-    .pinpagemain .right-pins {
-        column-count: 1;
-        top: 90px;
-        left: 600px;
-    }
-    .pinpagemain .left-pins {
-        top: 900px;
-        left: 80px;
-        gap: 10px;
-    }
-    .pinpagemain .pins img {
-        width: 250px;
-    }
-    .pinpagemain .actions-dropdown {
-        width: 230px;
-    }
-}
-
-@media (max-width: 400px){
-    .pinpagemain {
-        width: 100%;
-        margin-top: 0;
-        margin-left: 0;
-        margin-bottom: 50px;
-    }
-    .pinpagemain .arrow {
-        position: absolute;
-        background-color: white;
-        padding: 10px;
-        font-size: 50px;
+        width: 90%;
         margin: 10px;
     }
-    .pinpagemain .pin-card {
-        display: none;
-    }
-    .pinpagemain .pins {
-        display: none;
-    }
-    .pinpagemain-mobile {
-        display: block;
-        display: flex;
-        flex-direction: column;
-    }
-    .pinpagemain-mobile .pin {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin: 5px;
-    }
-    .pinpagemain-mobile .pin img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 20px;
-    }
-    .pinpagemain-mobile .pin .info {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 10px;
-    }
-    .pinpagemain-mobile .pin .info .icon {
-        font-size: 20px;
-    }
-    .pinpagemain-mobile .pin .info button {
-        font-size: 15px;
-        padding: 10px 14px;
-    }
-    .pinpagemain-mobile .pin .publisher {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        margin-left: 10px;
-    }
-    .pinpagemain-mobile .pin .publisher img {
-        width: 20px;
-        height: 20px;
-        object-fit: cover;
-    }
-    .pinpagemain-mobile .pin .publisher p {
-        font-size: 12px;
-        font-weight: 500;
-    }
-    .pinpagemain-mobile .pin-dropdown {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        z-index: 301;
-        background-color: white;
-        position: absolute;
-        bottom: -50px;
-        width: calc(100% - 10px);
-    }
-    .pinpagemain-mobile .pin-dropdown.open {
-        display: block;
-    }
-    .pinpagemain-mobile .pin-dropdown p {
-        padding: 10px;
-        font-size: 14px;
-        font-weight: 500;
-    }
-    .pinpagemain-mobile .more {
-        font-size: 16px;
-        font-weight: 500;
-        margin: 20px 10px 10px;
-    }
-    .pinpagemain-mobile .pins {
-        display: block;
-        column-count: 2;
-        column-gap: 5px;
-        margin: 0 10px;
-    }
-    .pinpagemain-mobile .pins .card {
-        break-inside: avoid;
-    }
-    .pinpagemain-mobile .pins .card img {
-        width: 180px;
-        height: auto;
-        object-fit: contain;
-        border-radius: 20px;
-    }
-    .pinpagemain-mobile .pins .card .pin-info p {
-        width: 150px;
-    }
-    .pinpagemain-mobile .pins .card {
-        position: relative;
-    }
-    .pinpagemain-mobile .pins .actions-dropdown {
-        width: 200px;
-    }
-    .pinpagemain-mobile .pin .like-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-    }
-    .pinpagemain-mobile .pin .like-wrapper .icon.liked {
-        color:#b8001c;
-    }
-    .pinpagemain-mobile .pin .like-wrapper .likes-count {
-        font-size: 14px;
-        font-weight: 600;
-    }
-}
-@media(min-width: 1600px){
-    .pinpagemain .arrow {
-        font-size: 75px;
-    }
-    .pinpagemain .pin-card {
-        width: 670px;
-        height: 800px;
-        top: 100px;
-        left: 190px;
-    }
-    .pinpagemain .pin-card-header .icon {
-        font-size: 50px;
-    }
-    .pinpagemain button {
-        padding: 15px 19px;
-        font-size: 17px;
-    }
-    .pinpagemain .pin-card img {
-        height: 600px;
+    .pinpagemain .pin-card .img {
+        width: 50%;
+        max-height: 700px;
     }
     .pinpagemain .pin-card .caption {
-        font-size: 20px;
-        margin-top: 20px;
+        font-size: 22px;
+        margin: 10px;
     }
-    .pinpagemain .pin-card .publisher-info img {
-        width: 30px;
-        height: 30px;
+    .pinpagemain .publisher-info img {
+        width: 50px;
+        height: 50px;
     }
     .pinpagemain .publisher-info p {
-        font-size: 18px;
+        font-size: 22px;
     }
-    .pinpagemain .right-pins {
-        left: auto;
-        right: 20px;
-        top: 100px;
-        column-count: 3;
+    .pinpagemain .pin-card-header .icon {
+        font-size: 55px;
+    }
+    .pinpagemain button {
+        padding: 16px 20px;
+        font-size: 20px;
+    }
+    .pinpagemain .pins {
+        column-count: 4;
         gap: 20px;
-    }
-    .pinpagemain .left-pins {
-        top: 920px;
-        left: 190px;
-        gap: 20px;
-        margin: 0 auto;
-    }
-    .pinpagemain .pins img {
-        width: 320px;
-    }
-    .pinpagemain .actions-dropdown {
-        width: 300px;
-        bottom: 40px;
-    }
-    .pinpagemain .actions-dropdown div .icon {
-        font-size: 25px;
-    }
-    .pinpagemain .actions-dropdown div p {
-        font-size: 18px;
-    }
-    .pinpagemain .pin-card-dropdown {
-        width: 250px;
-    }
-    .pinpagemain .pin-card-dropdown p {
-        font-size: 17px;
     }
 }

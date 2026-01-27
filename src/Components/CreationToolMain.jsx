@@ -1,43 +1,33 @@
 import React, {useState} from 'react'
 import './CreationToolMain.css'
 import { GrUploadOption } from "react-icons/gr";
-import { useAxios } from '../api/axiosInstance';
+import axios from 'axios';
 
 const CreationToolMain = () => {
-
-  const axiosInstance = useAxios();
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!image) return alert("Please select an image.");
-    if (!tags.trim()) return alert("Please add at least one tag.");
-
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("caption", caption);
-    formData.append("tags", JSON.stringify(tags.split(",").map(t => t.trim().toLowerCase())));
-
-    try {
-      setLoading(true);
-      const res = await axiosInstance.post("/pin", formData, {
-        headers: { "Content-Type": "multipart/form-data" }
-      });
-      console.log("Pin created:", res.data);
-      alert("Pin created successfully!");
-      setCaption("");
-      setImage(null);
-      setTags("");
-    } catch (err) {
-      console.error(err);
-      alert("Error creating pin.");
-    } finally {
-      setLoading(false);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!image) return alert("Please select an image.");
+  if (!tags.trim()) return alert("Please add at least one tag.");
+  const formData = { image, caption, tags };
+  try {
+    setLoading(true);
+    const res = await axios.post("/api/pin", formData, {withCredentials:true, headers: { "Content-Type": "multipart/form-data" }});
+    console.log("Pin created:", res.data);
+    setCaption("");
+    setImage(null);
+    setTags("");
+  } catch (error) {
+    console.error(error);
+    alert("Error creating pin.");
+  } finally {
+    setLoading(false);
+  }
+}
 
    return (
       <div className='creation-tool'>
