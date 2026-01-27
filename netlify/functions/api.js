@@ -6,8 +6,8 @@ export async function handler(event) {
         const backend = "https://pinterest-backend-lvmx.onrender.com";
         const url = backend + event.path.replace("/api", "") + (event.rawQuery ? `?${event.rawQuery}` : "");
         const res = await fetch(url, { method: event.httpMethod,
-            headers: { cookie: event.headers.cookie || "", },
-            body: event.httpMethod === "GET" || event.httpMethod === "HEAD" ? undefined : event.body, });
+            headers: { "Content-Type": "application/json", cookie: event.headers.cookie || "", },
+            body: event.body && event.httpMethod !== "GET" && event.httpMethod !== "HEAD" ? event.body : undefined, });
             const contentType = res.headers.get("content-type") || "application/octet-stream";
             const bodyBuffer = await res.arrayBuffer();
         return {
