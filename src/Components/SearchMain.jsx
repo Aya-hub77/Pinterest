@@ -38,7 +38,7 @@ const SearchMain = () => {
         {searchResults.map((pin) => (   
           <div className="pin" key={pin._id}>
             <div className="img-wrapper">
-              <Link to={`/pin/${pin._id}`}><img src={`/api/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /></Link>
+              <Link to={`/pin/${pin._id}`}><img src={pin.img} alt={pin.caption} loading="lazy" /></Link>
               <button className="save">Save</button>
               <LuDownload className="download" />
             </div>
