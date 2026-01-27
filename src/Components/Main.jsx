@@ -36,7 +36,7 @@ useEffect(() => {
         {pins.map((pin) => (   
           <div className="pin" key={pin.id}>
             <div className="img-wrapper">
-              <Link to={`/pin/${pin.id}`}><img src={pin.img} alt={pin.caption} loading="lazy" /></Link>
+              <Link to={`/pin/${pin.id}`}><img src={`/api/uploads/${pin.img}`} alt={pin.caption} loading="lazy" /></Link>
               <button className="save">Save</button>
               <LuDownload className="download" />
             </div>
