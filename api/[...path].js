@@ -22,16 +22,18 @@ export default async function handler(req, res) {
             }
             res.status(response.status);
 
+            response.headers.forEach((value, key) => {
+                if (key.toLowerCase() !== "transfer-encoding") {
+                    res.setHeader(key, value);
+                }
+            });
             const contentType = response.headers.get("content-type") || "";
             if (contentType.startsWith("application/json") || contentType.startsWith("text/")) {
                 const text = await response.text();
-                res.setHeader("Content-Type", "application/json");
                 res.send(text);
             } else {
                 const buffer = Buffer.from(await response.arrayBuffer());
-                res.setHeader("Content-Type", contentType);
-                res.removeHeader("Content-Encoding");
-                res.send(buffer);
+                res.end(buffer);
             }
     } catch (err) {
         console.error("Function error:", err);
