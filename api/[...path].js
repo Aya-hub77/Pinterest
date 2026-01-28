@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 export default async function handler(req, res) {
     try {
-        const backend = "backend_URL";
+        const backend = "https://pinterest-backend-lvmx.onrender.com";
         const url = backend + req.url.replace(/^\/api/, "");
         
         const response = await fetch(url, {
