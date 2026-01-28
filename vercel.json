@@ -1,8 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
-  ],
-  "api": {
-    "bodyParser": false
-  }
+    "rewrites": [
+        { "source": "/((?!api/).*)", "destination": "/index.html" }
+    ]
 }
