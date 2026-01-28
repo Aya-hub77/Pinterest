@@ -5,16 +5,23 @@ export default async function handler(req, res) {
     try {
         const backend = "https://pinterest-backend-lvmx.onrender.com";
         const url = backend + req.url.replace(/^\/api/, "");
+
+        const headers = { cookie: req.headers.cookie || "" };
+        if (req.method !== "GET" && req.method !== "HEAD") {
+            headers["Content-Type"] = "application/json";
+        }
         
         const response = await fetch(url, {
             method: req.method,
-            headers: { cookie: req.headers.cookie || "",},
+            headers,
             body: req.method === "GET" || req.method === "HEAD" ? undefined : JSON.stringify(req.body), });
-            
-            res.status(response.status);
-            if (response.headers.get("set-cookie")) {
-                res.setHeader("Set-Cookie", response.headers.get("set-cookie"));
+
+            const setCookies = response.headers.raw()["set-cookie"];
+            if (setCookies) {
+                res.setHeader("Set-Cookie", setCookies);
             }
+            res.status(response.status);
+
             const contentType = response.headers.get("content-type") || "";
             if (contentType.startsWith("application/json") || contentType.startsWith("text/")) {
                 const text = await response.text();
