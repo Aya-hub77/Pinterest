@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     res.status(response.status);
 
     response.headers.forEach((value, key) => {
-        if (!["content-length", "transfer-encoding"].includes(key.toLowerCase())) {
+        if (!["content-length", "transfer-encoding", "transfer-encoding"].includes(key.toLowerCase())) {
             res.setHeader(key, value);
         }
     });
