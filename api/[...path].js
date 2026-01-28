@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         
         const response = await fetch(url, {
             method: req.method,
-            headers: { "Content-Type": "application/json", cookie: req.headers.cookie || "",},
+            headers: { cookie: req.headers.cookie || "",},
             body: req.method === "GET" || req.method === "HEAD" ? undefined : JSON.stringify(req.body), });
             
             res.status(response.status);
