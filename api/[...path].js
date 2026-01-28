@@ -30,6 +30,7 @@ export default async function handler(req, res) {
             const contentType = response.headers.get("content-type") || "";
             if (contentType.startsWith("application/json") || contentType.startsWith("text/")) {
                 const text = await response.text();
+                res.setHeader("Content-Type", contentType);
                 res.send(text);
             } else {
                 const buffer = Buffer.from(await response.arrayBuffer());
