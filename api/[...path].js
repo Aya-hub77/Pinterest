@@ -22,6 +22,7 @@ export default async function handler(req, res) {
                 res.send(text);
             } else {
                 const buffer = Buffer.from(await response.arrayBuffer());
+                res.setHeader("Content-Type", contentType);
                 res.removeHeader("Content-Encoding");
                 res.send(buffer);
             }
