@@ -6,14 +6,14 @@ export default async function handler(req, res) {
         const backend = "https://pinterest-backend-lvmx.onrender.com";
         const url = backend + req.url.replace(/^\/api/, "");
 
-        console.log("Proxying request to:", url);
+        const headers = { cookie: req.headers.cookie || "" };
+        if (!(req.method === "GET" || req.method === "HEAD")) {
+            headers["Content-Type"] = "application/json";
+        }
 
         const response = await fetch(url, {
             method: req.method,
-            headers: {
-                "Content-Type": "application/json",
-                cookie: req.headers.cookie || "",
-            },
+            headers,
             body:
             req.method === "GET" || req.method === "HEAD"
             ? undefined
