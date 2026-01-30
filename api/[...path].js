@@ -4,7 +4,8 @@ import { Buffer } from "buffer";
 export default async function handler(req, res) {
     try {
         const backend = "https://pinterest-backend-lvmx.onrender.com";
-        const url = backend + req.url.replace(/^\/api/, "");
+        const path = req.url.replace(/^\/api/, "");
+        const url = backend + path;
 
         const headers = { cookie: req.headers.cookie || "" };
         if (!(req.method === "GET" || req.method === "HEAD")) {
