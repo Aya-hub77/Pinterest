@@ -53,11 +53,11 @@ useEffect(() => {
     <div className="pinpagemain">
       <FaArrowLeftLong className="arrow" onClick={() => navigate(-1)} />
       <div className="pin-card">
-        <img src={`https://pinterest-backend-lvmx.onrender.com/uploads/${pin.img}`} loading="lazy" alt={pin.caption} className="img"/>
-        <p className="caption">{pin.caption}</p>
+        <img src={`https://pinterest-backend-lvmx.onrender.com/uploads/${pin?.img}`} loading="lazy" alt={pin?.caption} className="img"/>
+        <p className="caption">{pin?.caption}</p>
         <div className="publisher-info">
           <img src={profile} alt="Publisher" />
-          <p>{pin.owner?.username || "Unknown user"}</p>
+          <p>{pin?.owner?.username || "Unknown user"}</p>
         </div>
         <div className="pin-card-header">
           <div>
