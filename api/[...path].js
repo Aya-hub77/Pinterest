@@ -6,6 +6,8 @@ export default async function handler(req, res) {
         const backend = "https://pinterest-backend-lvmx.onrender.com";
         const url = backend + req.url.replace(/^\/api/, "");
 
+        console.log("Proxying request to:", url);
+
         const response = await fetch(url, {
             method: req.method,
             headers: {
