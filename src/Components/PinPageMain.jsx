@@ -53,7 +53,7 @@ useEffect(() => {
     <div className="pinpagemain">
       <FaArrowLeftLong className="arrow" onClick={() => navigate(-1)} />
       <div className="pin-card">
-        <img src={`/api/uploads/${pin.img}`} loading="lazy" alt={pin.caption} className="img"/>
+        <img src={`https://pinterest-backend-lvmx.onrender.com/uploads/${pin.img}`} loading="lazy" alt={pin.caption} className="img"/>
         <p className="caption">{pin.caption}</p>
         <div className="publisher-info">
           <img src={profile} alt="Publisher" />
@@ -74,7 +74,7 @@ useEffect(() => {
           {pins.map((s) => (
             <div key={s.id} className="pin">
               <div className="pin-wrapper">
-                <Link to={`/pin/${s.id}`}><img src={`/api/uploads/${s.img}`} alt={s.caption} /></Link>
+                <Link to={`/pin/${s.id}`}><img src={`https://pinterest-backend-lvmx.onrender.com/uploads/${s.img}`} alt={s.caption} /></Link>
                 <button className="save">Save</button>
                 <LuDownload className="download" />
               </div>

@@ -65,7 +65,7 @@ const handleLogout = async () => {
             ) : (
           pins.map(pin => (
             <div key={pin.id} className='pin'>
-              <img src={`/api/uploads/${pin.img}`} alt={pin.caption} />
+              <img src={`https://pinterest-backend-lvmx.onrender.com/uploads/${pin.img}`} alt={pin.caption} />
               <p>{pin.caption}</p>
             </div>
           ))
